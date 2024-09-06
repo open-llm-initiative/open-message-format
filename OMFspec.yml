@@ -1,0 +1,136 @@
+openapi: 3.0.3
+info:
+    title: Open Message Format
+    description: |
+        This specification defines an API contract between client and server for building conversational agents, and defines a standard schema for the "messages" object, which contains user and assistant interactions. The "messages" object schema serves a dual purpose, to capture user and assistant conversation from client to your back-end, and from your back-end server to an upstream LLM
+    version: 1.0.0
+paths:
+    # endpoint for clients to send messages to
+    /message:
+        post:
+            summary: This method allows developers to receive chat messages from an upstream client in a standard format.
+            description: |
+                This endpoint receives a message or messages object from a client and returns a message containing the content of the response.
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Messages"
+            responses:
+                "200":
+                    description: Response containing the content string.
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/ResponseMessage"
+                "400":
+                    description: Bad request
+                "500":
+                    description: Internal server error
+
+components:
+    schemas:
+        # Array of messages
+        Messages:
+            type: array
+            items:
+                $ref: "#/components/schemas/Message"
+
+        # Schema for a single message object
+        Message:
+            type: object
+            properties:
+                role:
+                    type: string
+                    description: |
+                        Role of the message sender. Examples include:
+                        - `system`: For system messages
+                        - `user`: For messages from the user
+                        - `assistant`: For messages from the assistant
+                content:
+                    oneOf:
+                        - type: array
+                          items:
+                              $ref: "#/components/schemas/ContentItem"
+                          description: |
+                              Content of the message. It can be a list of content items, such as text and images.
+                        - type: string
+                          description: text content of the message,
+            required:
+                - role
+                - content
+
+        # Schema for a single content item within a message
+        ContentItem:
+            type: object
+            properties:
+                type:
+                    type: string
+                    description: The type of content, such as text or image URL.
+                text:
+                    type: string
+                    description: The text content. Required if type is 'text'.
+                image_url:
+                    type: object
+                    properties:
+                        url:
+                            type: string
+                            description: The URL of the image.
+                    description: The image URL object. Required if type is 'image_url'.
+                source:
+                    type: object
+                    properties:
+                        type:
+                            type: string
+                            enum: [base64]
+                            description: The type of source, such as base64.
+                        media_type:
+                            type: string
+                            enum: [image/jpeg, image/png, image/gif, image/webp]
+                            description: The media type of the image.
+                        data:
+                            type: string
+                            format: base64
+                            description: The base64-encoded image data.
+                    description: The source object. Required if type is 'image'.
+
+            required:
+                - type
+            oneOf:
+                - required: ["text"]
+                - required: ["image_url"]
+                - required: ["source"]
+
+        # Schema for the response message
+        ResponseMessage:
+            type: object
+            properties:
+                content:
+                    type: string
+                    description: The content of the response message.
+                refusal:
+                    type: string
+                    nullable: true
+                    description: The refusal message if applicable, or null if not.
+                role:
+                    type: string
+                    description: The role of the author of the message (e.g., 'assistant').
+                metadata:
+                    $ref: "#/components/schemas/Metadata"
+            required:
+                - content
+                - role
+
+        # Schema for the metadata object
+        Metadata:
+            type: object
+            properties:
+                model:
+                    type: string
+                    description: The name of the model used to generate the response.
+                tokens:
+                    type: string
+                    description: The number of tokens used to generate the response.
+            required:
+                - model
