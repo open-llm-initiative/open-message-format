@@ -14,8 +14,8 @@ The key advantages of using OMF are:
 ## Benefits for Developers
 OMF simplifies the process of sending messages, making it easier to deploy conversational agents and other LLM-based tools and applications. It removes the guesswork for developers on how to send and receive messages.
 
-![image](https://github.com/user-attachments/assets/f34e812a-eacb-420a-89f1-c6b15ab8c446)
-![image (1)](https://github.com/user-attachments/assets/2c58b2a3-5437-46ad-ae89-581eac7c77bb)
+![image](site_content/before.png)
+![image (1)](site_content/after.png)
 
 
 
