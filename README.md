@@ -14,8 +14,8 @@ The key advantages of using OMF are:
 ## Benefits for Developers
 OMF simplifies the process of sending messages, making it easier to deploy conversational agents and other LLM-based tools and applications. It removes the guesswork for developers on how to send and receive messages.
 
-![image](https://github.com/user-attachments/assets/f34e812a-eacb-420a-89f1-c6b15ab8c446)
-![image (1)](https://github.com/user-attachments/assets/2c58b2a3-5437-46ad-ae89-581eac7c77bb)
+![image](https://github-production-user-asset-6210df.s3.amazonaws.com/82300923/364278952-f34e812a-eacb-420a-89f1-c6b15ab8c446.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240909%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240909T165001Z&X-Amz-Expires=300&X-Amz-Signature=5a018ba853db2b97f8ef080612b83fc7425d8c5446415176afd81ef687ccd2e1&X-Amz-SignedHeaders=host&actor_id=13196462&key_id=0&repo_id=829108644)
+![image (1)](https://github-production-user-asset-6210df.s3.amazonaws.com/82300923/364279009-2c58b2a3-5437-46ad-ae89-581eac7c77bb.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240909%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240909T165105Z&X-Amz-Expires=300&X-Amz-Signature=f540477193f713954f711fbbd9b4cd156d8a7e188dde390c66d868dabb313a65&X-Amz-SignedHeaders=host&actor_id=13196462&key_id=0&repo_id=829108644)
 
 
 
