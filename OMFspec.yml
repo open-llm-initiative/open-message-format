@@ -129,8 +129,24 @@ components:
                 model:
                     type: string
                     description: The name of the model used to generate the response.
-                tokens:
-                    type: string
-                    description: The number of tokens used to generate the response.
+                usage:
+                    $ref: "#/components/schemas/Usage"
             required:
                 - model
+        Usage:
+            type: object
+            description: Usage statistics for the request.
+            properties:
+                completion_tokens:
+                    type: integer
+                    description: Number of tokens in the generated completion.
+                prompt_tokens:
+                    type: integer
+                    description: Number of tokens in the prompt.
+                total_tokens:
+                    type: integer
+                    description: Total number of tokens used in the request (prompt + completion).
+            required:
+                - prompt_tokens
+                - completion_tokens
+                - total_tokens
