@@ -40,15 +40,15 @@ If tools like `openapi-generator-cli` are not be viable for creating server stub
 1. **Manually Create the `/message` Endpoint**:
     - In your chosen framework, define a POST endpoint `/message`.
     - Ensure that this endpoint accepts and processes the JSON payload as defined in the OMF spec.
-    - The endpoint should accept a an array of the [`Message`](https://github.com/open-llm-initiative/open-message-format/blob/e6d4d93e4652e0594c81f3b3b4d7192ad3dffab0/OMFspec.yml#L41) object. Each message will have a `role` and a `content` field, and the content could be text, base64-encoded images, or image URLs.
+    - The endpoint should accept a an array of the [`Message`](https://github.com/open-llm-initiative/open-message-format/blob/main/OMFspec.yml#L41) object. Each message will have a `role` and a `content` field, and the content could be text, base64-encoded images, or image URLs.
 
 2. **Message Handling Logic**:
-    - Parse the incoming JSON request into appropriate data models. The [`Message`](https://github.com/open-llm-initiative/open-message-format/blob/e6d4d93e4652e0594c81f3b3b4d7192ad3dffab0/OMFspec.yml#L41) object should be parsed with a `role` and an array of [`ContentItem`](https://github.com/open-llm-initiative/open-message-format/blob/e6d4d93e4652e0594c81f3b3b4d7192ad3dffab0/OMFspec.yml#L65) objects.
+    - Parse the incoming JSON request into appropriate data models. The [`Message`](https://github.com/open-llm-initiative/open-message-format/blob/main/OMFspec.yml#L41) object should be parsed with a `role` and an array of [`ContentItem`](https://github.com/open-llm-initiative/open-message-format/blob/main/OMFspec.yml#L65) objects.
     - Implement logic to handle different types of content, such as text, images, and image URLs.
     - If you want to, you can directly send the array to an LLM by just passing it in the messages parameter for many LLM providers. You may need to create some tools to convert depending on the model you use.
 
 3. **Construct Responses**:
-    - Based on the request, generate a response that follows the [`ResponseMessage`](https://github.com/open-llm-initiative/open-message-format/blob/e6d4d93e4652e0594c81f3b3b4d7192ad3dffab0/OMFspec.yml#L106) schema outlined in the specification.
+    - Based on the request, generate a response that follows the [`ResponseMessage`](https://github.com/open-llm-initiative/open-message-format/blob/main/OMFspec.yml#L106) schema outlined in the specification.
 
 #### c. Example Setup
 
