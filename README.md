@@ -17,7 +17,18 @@ OMF simplifies the process of sending messages, making it easier to deploy conve
 ![image](site_content/before.png)
 ![image (1)](site_content/after.png)
 
+## Compatability
+| LLM Provider   | Compatible with Stock OMF | Benefits from Additional Tooling | Requires Additional Tooling |
+| -------------- | ------------------------- | -------------------------------- | --------------------------- |
+| OpenAI         | Yes                       | Yes                              | No                          |
+| Mistral AI     | Yes                       | Yes                              | No                          |
+| Anthropic      | Yes                       | Yes                              | No                          |
+| IBM            | No                        | No                               | Yes                         |
+| Google         | Yes (Requires Conversion) | Yes                              | No                          |
+| Amazon Bedrock | Yes (Requires Conversion) | Yes                              | No                          |
+| Cohere         | Yes (Requires Conversion) | Yes                              | No                          |
 
+*Note: Some models have unique parameters such as `message_id` or `name`. These parameters, while easy to add for specific models, are not universal and therefore not included in the base specification. Some models also have certain function calling capabilities but due to function calls being more relevant to a full `ChatCompletions` setup, this is more relevant to the Open Completions API*
 
 ## How to Use OMF
 
@@ -151,18 +162,7 @@ name:
                 The name of the user sending the message.
 ```
 *This is the section that was added to the spec in the above*
-## Comparison
-| LLM Provider   | Compatible with Stock OMF | Benefits from Additional Tooling | Requires Additional Tooling |
-| -------------- | ------------------------- | -------------------------------- | --------------------------- |
-| OpenAI         | Yes                       | Yes                              | No                          |
-| Mistral AI     | Yes                       | Yes                              | No                          |
-| Anthropic      | Yes                       | Yes                              | No                          |
-| IBM            | No                        | No                               | Yes                         |
-| Google         | Yes (Requires Conversion) | Yes                              | No                          |
-| Amazon Bedrock | Yes (Requires Conversion) | Yes                              | No                          |
-| Cohere         | Yes (Requires Conversion) | Yes                              | No                          |
 
-*Note: Some models have unique parameters such as `message_id` or `name`. These parameters, while easy to add for specific models, are not universal and therefore not included in the base specification. Some models also have certain function calling capabilities but due to function calls being more relevant to a full `ChatCompletions` setup, this is more relevant to the Open Completions API*
 ## Roadmap
 Future improvements include:
 
